@@ -1,441 +1,85 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        @keyframes next {
-            75% { left: 0; }
-            95% { left: 100%; }
-            98% { left: 100%; }
-            99% { left: 0; }
-        }
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-        @keyframes start {
-            75% { left: 0; }
-            95% { left: -300%; }
-            98% { left: -300%; }
-            99% { left: 0; }
-        }
-
-        @keyframes snap {
-            96% { scroll-snap-align: center; }
-            97% { scroll-snap-align: none; }
-            99% { scroll-snap-align: none; }
-            100% { scroll-snap-align: center; }
-        }
-
-        body {
-            max-width: 50.5rem;
-            margin: 85px;
-            margin-left: 300px;
-            padding: 0 0.20rem;
-            font-family: 'Lato', sans-serif;
-        }
-
-        * {
-            scrollbar-color: transparent transparent;
-            scrollbar-width: 0px;
-        }
-
-        *::-webkit-scrollbar {
-            width: 0;
-        }
-
-        *::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        *::-webkit-scrollbar-thumb {
-            background: transparent;
-            border: none;
-        }
-
-        * { -ms-overflow-style: none; }
-
-        ol, li {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .carousel {
-            position: relative;
-            padding-top: 80%;
-            filter: drop-shadow(0 0 10px #0003);
-            perspective: 0px;
-        }
-
-        .viewport {
-            position: relative;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            display: flex;
-            overflow-x: scroll;
-            counter-reset: item;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-        }
-
-        .slide {
-            position: relative;
-            flex: 0 0 100%;
-            width: 100%;
-            counter-increment: item;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 20px; /* Adjust as needed */
-        }
-
-        .big-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            margin-right: 20px; /* Adjust as needed to control the space */
-        }
-
-        .snapper {
-            position: relative;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            scroll-snap-align: center;
-            display: flex; /* Added to make the button and image align horizontally */
-            align-items: center; /* Added to vertically center the content */
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .snapper {
-                animation-name: none;
-            }
-        }
-
-        .carousel:hover .snapper,
-        .carousel:focus-within .snapper {
-            animation-name: none;
-        }
-
-        .navigation {
-            position: relative;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            text-align: center;
-        }
-
-        .navigation-list {
-            display: flex;
-            justify-content: center; /* Center the navigation buttons horizontally */
-        }
-
-        .navigation-item {
-            margin: 0 0.4rem;
-        }
-
-        .navigation-button {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10%;
-            overflow: hidden;
-            position: relative;
-            top: 150px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .small-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .navigation-button:hover {
-            transform: scale(1.1);
-        }
-
-        .carousel::before,
-        .carousel::after,
-        .prev,
-        .next {
-            position: relative;
-            top: 0;
-            margin-top: 37.5%;
-            width: 4rem;
-            height: 4rem;
-            transform: translateY(-50%);
-            border-radius: 50%;
-            font-size: 0;
-            outline: 0;
-        }
-
-        .carousel::before,
-        .prev {
-            left: -0rem;
-        }
-
-        .carousel::after,
-        .next {
-            right: -0rem;
-        }
-
-        .carousel::before,
-        .carousel::after {
-            content: '';
-            z-index: 1;
-            background-color: #00000087;
-            background-size: 1.5rem 1.5rem;
-            background-repeat: no-repeat;
-            background-position: center center;
-            color: #ffffff00;
-            font-size: 2.5rem;
-            line-height: 4rem;
-            text-align: center;
-            pointer-events: none;
-        }
-
-        .carousel::before {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
-        }
-
-        .carousel::after {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
-        }
-        .buy-now {
-            position: fixed;
-            top: 72%;
-            right: -39em; /* Adjusted right margin */
-            transform: translateY(-50%);
-        }
-
-        button {
-            font-size: 50px;
-            border: 0;
-            cursor: pointer;
-            background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100%);
-            box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
-                inset 0px -0.01em 0px rgb(58 65 111 / 50%);
-            padding: 0 2em;
-            left: -30%;
-            border-radius: 0.3em;
-            color: #fff;
-            height: 2.9em;
-            text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
-            transition: box-shadow 0.15s ease, transform 0.15s ease;
-        }
-
-        button:hover {
-            box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%),
-                inset 0px -0.1em 0px #3c4fe0;
-            transform: translateY(-0.1em);
-        }
-
-        button:active {
-            box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
-            transform: translateY(0em);
-        }
-
-        button:active {
-            box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
-            transform: translateY(0em);
-        }
-
-        .titel {
-            position: relative;
-            font-size: 2rem;
-            right: -62%;
-            top: 1%;        
-            white-space: nowrap;
-            color: #5468FF;
-            text-align: left;
-        }
-        .quantity {
-            display: flex;
-            align-items: center;
-            margin-top: -10px;
-          
-            margin-left: 10px;
-        }
-
-        
- 
-
-        .quantity input {
-            width: 10px;
-            height: 25px;
-            text-align: center;
-            margin: 0 5px;
-            border-radius: 20px;
-            margin-right: 100px;
-        }
-
- 
-
-        .quantity button {
-            padding: 10px 20px;           
-            border-radius: 10px;
-            background-color: #ffffff;
-            color: #102a71;
-            cursor: pointer;
-            transition: background-color 0.5s cubic-bezier(0.47, 1.64, 0.41, 0.8);
-        }
-
- 
-
-        .quantity button:hover {
-            background-color: #102a71;
-        }
-
-        .quantity button.minus-btn[disabled] {
-            background-color: #ffffff;
-            cursor: not-allowed;
-        }
-        #total-price {
-            margin-top: 0px;
-            font-size: 1.5em;
-            color: #429E9D;
-            margin-left: 10px;
-        }
-        .quantity input,
-        .quantity button {
-            width: 15%;
-            height: 10%;
-            margin: 10px;
-        }
-
-
-
-    </style>
-  <title>Car Couture</title>
-
-  <section class="carousel" aria-label="Gallery">
-    <ol class="viewport">
-        <li id="slide1" tabindex="0" class="slide">
-            <div class="snapper">
-                <!-- Add big image for slide 1 -->
-                <img class="big-img" src="turbo as.webp" alt="Slide 1">
-                <div class="titel">
-                    <h1>Turbo Air Freshener</h1>                       
-                </div>               
-                <a href="#slide4" class="prev">Go to last slide</a>
-                <a href="#slide2" class="next">Go to next slide</a>
-            </div>
-        </li>
-            <li id="slide2" tabindex="0" class="slide">
-                <div class="snapper">
-                    <!-- Add big image for slide 2 -->
-                    <div class="buy-now">
-                        <div class="quantity">
-                            <button class="btn minus-btn disabled" type="button" disabled="disabled">-</button>
-                            <input type="text" id="quantity" value="1">
-                            <button class="btn plus-btn" type="button">+</button>
-                            <div id="total-price">Total Price: $18.95</div>
-                        </div>
-                        <button>
-                            BUY NOW
-                        </button>
-                    </div>
-                    <img class="big-img" src="turbo.jpg" alt="Slide 2">
-                </div>
-                <a href="#slide1" class="prev">Go to previous slide</a>
-                <a href="#slide3" class="next">Go to next slide</a>
-            </li>
-
-            <li id="slide3" tabindex="0" class="slide">
-                <div class="snapper">
-                    <!-- Add big image for slide 3 -->
-               
-                    <img class="big-img" src="turbo2.jpg" alt="Slide 3">
-                </div>
-                <a href="#slide2" class="prev">Go to previous slide</a>
-                <a href="#slide4" class="next">Go to next slide</a>
-            </li>
-            <li id="slide4" tabindex="0" class="slide">
-                <div class="snapper">
-                    <!-- Add big image for slide 4 -->
-                    <img class="big-img" src="turbo5.jpg" alt="Slide 4">
-                </div>
-                <a href="#slide3" class="prev">Go to previous slide</a>
-                <a href="#slide1" class="next">Go to first slide</a>
-            </li>
-        </ol>
-        
-        <aside class="navigation">
-            <ol class="navigation-list">
-                <li class="navigation-item">
-                    <a href="#slide1" class="navigation-button">
-                        <!-- Add small image for navigation button 1 -->
-                        <img class="small-img" src="turbo 1.jpg" alt="Slide 1">
-                    </a>
-                </li>
-                
-                <li class="navigation-item">
-                    <a href="#slide2" class="navigation-button">
-                        <!-- Add small image for navigation button 2 -->
-                        <img class="small-img" src="turbo.jpg" alt="Slide 2">
-                    </a>
-                </li>
-                <li class="navigation-item">
-                    <a href="#slide3" class="navigation-button">
-                        <!-- Add small image for navigation button 3 -->
-                        <img class="small-img" src="turbo2.jpg" alt="Slide 3">
-                    </a>
-                </li>
-                
-                <li class="navigation-item">
-                    <a href="#slide4" class="navigation-button">
-                        <!-- Add small image for navigation button 4 -->
-                        <img class="small-img" src="turbo5.jpg" alt="Slide 4">
-                    </a>
-                </li>
-            </ol>
-        </aside>
-        
-        
-    </section>
-    <script>
-                var valueCount = 1;
-
- 
-
-document.querySelector(".plus-btn").addEventListener("click", function () {
-    valueCount++;
-    document.getElementById("quantity").value = valueCount;
-    document.querySelector(".minus-btn").removeAttribute("disabled");
-    document.querySelector(".minus-btn").classList.remove("disabled");
-    priceTotal();
-});
-
-
-
-document.querySelector(".minus-btn").addEventListener("click", function () {
-    valueCount--;
-    document.getElementById("quantity").value = valueCount;
-    if (valueCount === 1) {
-        document.querySelector(".minus-btn").setAttribute("disabled", "disabled");
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
     }
-    priceTotal();
-});
 
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
 
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
 
-function priceTotal() {
-    const pricePerItem = 18.95;
-    const quantity = parseInt(document.getElementById("quantity").value);
-    const totalPrice = pricePerItem * quantity;
-    document.getElementById("total-price").textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-}
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
 
+<body>
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
 
-priceTotal();
-    </script>
-    
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      rewind: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 </body>
 
 </html>
