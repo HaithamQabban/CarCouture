@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Swiper demo</title>
+  <title>CarCouture</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -15,7 +15,8 @@
       position: relative;
       height: 100%;
       margin: 0;
-      padding: 10px;
+      padding: 0;
+      overflow: hidden;
     }
 
     body {
@@ -26,15 +27,22 @@
     }
 
     .swiper {
-      width: 80%;
+      width: 35%;
+      height: auto;
       box-sizing: border-box;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 0;
+     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       overflow: hidden;
-      margin: 50px auto;
+      margin: 30px auto;
+      border-radius:25px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .swiper-slide {
+      position: relative;
       width: 100%;
       height: 100%;
       display: flex;
@@ -45,15 +53,105 @@
     .swiper-slide img {
       max-width: 100%;
       max-height: 100%;
+      width: auto;
       height: auto;
-      object-fit: cover;
+      object-fit: contain;
+      max-height: 100%;
+      max-width: 100%;
     }
 
     .swiper-button-next,
     .swiper-button-prev {
       color: #eee;
     }
-    
+
+    /* Media query for smaller screens */
+    @media only screen and (max-width: 968px) {
+      .swiper {
+        width: 90%;
+      }
+    }
+
+    .buy-now {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .quantity input {
+      width: 40px;
+      height: 30px;
+      text-align: center;
+      margin: 0 5px;
+      border-radius: 5px;
+    }
+
+    .quantity button {
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #ffffff;
+      color: #102a71;
+      cursor: pointer;
+      transition: background-color 0.5s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+    }
+
+    .quantity button:hover {
+      background-color: #102a71;
+      color: #fff;
+    }
+
+    .quantity button.minus-btn[disabled] {
+      background-color: #ffffff;
+      cursor: not-allowed;
+    }
+
+    #total-price {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #429E9D;
+    }
+
+    .buy-now button {
+      font-size: 40px;
+      border: 0;
+      cursor: pointer;
+      background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100%);
+      box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
+        inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .buy-now button:hover {
+      box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%),
+        inset 0px -0.1em 0px #3c4fe0;
+      transform: translateY(-0.1em);
+    }
+
+    .buy-now button:active {
+      box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+      transform: translateY(0em);
+    }
+
+    .titel {
+            position: relative;
+            font-size: 1rem;    
+            white-space: nowrap;
+            color: #5468FF;
+        }
+
+
   </style>
 </head>
 
@@ -62,7 +160,7 @@
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="turbo as.webp" alt="Slide 1">
+        <img src="turbo as (1).webp" alt="Slide 1">
       </div>
       <div class="swiper-slide">
         <img src="turbo 1.jpg" alt="Slide 2">
@@ -76,6 +174,21 @@
     <div class="swiper-button-prev"></div>
   </div>
 
+  <div class="buy-now">
+    <div class="titel">
+      <h1>Turbo Air Freshener</h1> 
+    <div class="quantity">
+      <button class="btn minus-btn disabled" type="button" disabled="disabled">-</button>
+      <input type="text" id="quantity" value="1">
+      <button class="btn plus-btn" type="button">+</button>
+    </div>
+    <div id="total-price">Total Price: $18.95</div>
+    <button>
+      BUY NOW
+    </button>
+  </div>
+
+
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -88,6 +201,35 @@
         prevEl: ".swiper-button-prev",
       },
     });
+  </script>
+  <script>
+    var valueCount = 1;
+
+    document.querySelector(".plus-btn").addEventListener("click", function () {
+      valueCount++;
+      document.getElementById("quantity").value = valueCount;
+      document.querySelector(".minus-btn").removeAttribute("disabled");
+      document.querySelector(".minus-btn").classList.remove("disabled");
+      priceTotal();
+    });
+
+    document.querySelector(".minus-btn").addEventListener("click", function () {
+      valueCount--;
+      document.getElementById("quantity").value = valueCount;
+      if (valueCount === 1) {
+        document.querySelector(".minus-btn").setAttribute("disabled", "disabled");
+      }
+      priceTotal();
+    });
+
+    function priceTotal() {
+      const pricePerItem = 18.95;
+      const quantity = parseInt(document.getElementById("quantity").value);
+      const totalPrice = pricePerItem * quantity;
+      document.getElementById("total-price").textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+    }
+
+    priceTotal();
   </script>
 </body>
 
