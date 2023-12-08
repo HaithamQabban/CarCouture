@@ -41,26 +41,29 @@
       transform: translateX(-50%);
     }
 
-    .swiper-slide {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 2px; /* Updated margin here */
-    }
+.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2px; /* Updated margin here */
+  margin-top: 2px; /* Add margin-top to center vertically */
+}
 
-    .swiper-slide img {
-      max-width: 100%;
-      min-height: 50%;
-      width: auto;
-      height: auto;
-      position: centerr;
-      object-fit: contain;
-      max-height: 100%;
-      max-width: 100%;
-    }
+
+.swiper-slide img {
+  max-width: 100%;
+  min-height: 50%;
+  width: auto;
+  height: auto;
+  position: center; /* Corrected position value */
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+}
+
 
     .swiper-button-next,
     .swiper-button-prev {
