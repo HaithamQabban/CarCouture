@@ -267,6 +267,32 @@
 
     function changeSlide(index) {
       swiper.slideTo(index);
+
+      // Function to update margins based on available space
+function updateMargins() {
+  var swiperContainer = document.querySelector(".swiper");
+  var swiperSlide = document.querySelector(".swiper-slide");
+
+  // Calculate remaining space at the bottom
+  var remainingSpace = swiperContainer.clientHeight - swiperSlide.clientHeight;
+
+  // Update margins based on remaining space
+  var topMargin = remainingSpace > 0 ? remainingSpace / 2 : 0;
+  var bottomMargin = remainingSpace > 0 ? remainingSpace / 2 : 2;
+
+  // Apply margins to the swiper-slide
+  swiperSlide.style.marginTop = topMargin + "px";
+  swiperSlide.style.marginBottom = bottomMargin + "px";
+}
+
+// Event listener for window resize
+window.addEventListener("resize", updateMargins);
+
+// Initial update of margins
+updateMargins();
+
+// Swiper initialization and other scripts...
+
     }
   </script>
 </body>
