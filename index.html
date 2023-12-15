@@ -178,10 +178,11 @@
     }
   </style>
 </head>
- 
+
 <body>
   <!-- Swiper -->
   <div class="swiper mySwiper">
+    <!-- Swiper slides -->
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img src="turbo as.webp" alt="Slide 1">
@@ -196,9 +197,17 @@
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
- 
 
- 
+    <!-- Thumbnails -->
+    <div class="thumbnails">
+      <img class="thumbnail" src="turbo as.webp" alt="Thumbnail 1" onclick="changeSlide(0)">
+      <img class="thumbnail" src="turbo 1.jpg" alt="Thumbnail 2" onclick="changeSlide(1)">
+      <img class="thumbnail" src="turbo.jpg" alt="Thumbnail 3" onclick="changeSlide(2)">
+      <!-- Add more thumbnails as needed -->
+    </div>
+  </div>
+
+  <!-- "BUY NOW" section -->
   <div class="buy-now">
     <div class="titel">
       <h1>Turbo Air Freshener</h1>
@@ -214,18 +223,9 @@
     </div>
   </div>
 
-       <!-- Thumbnails -->
-    <div class="thumbnails">
-      <img class="thumbnail" src="turbo as.webp" alt="Thumbnail 1" onclick="changeSlide(0)">
-      <img class="thumbnail" src="turbo 1.jpg" alt="Thumbnail 2" onclick="changeSlide(1)">
-      <img class="thumbnail" src="turbo.jpg" alt="Thumbnail 3" onclick="changeSlide(2)">
-      <!-- Add more thumbnails as needed -->
-    </div>
-  </div>
- 
   <!-- Your existing scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
- 
+
   <script>
     var swiper = new Swiper(".mySwiper", {
       rewind: true,
@@ -234,9 +234,9 @@
         prevEl: ".swiper-button-prev",
       },
     });
- 
+
     var valueCount = 1;
- 
+
     document.querySelector(".plus-btn").addEventListener("click", function () {
       valueCount++;
       document.getElementById("quantity").value = valueCount;
@@ -244,7 +244,7 @@
       document.querySelector(".minus-btn").classList.remove("disabled");
       priceTotal();
     });
- 
+
     document.querySelector(".minus-btn").addEventListener("click", function () {
       valueCount--;
       document.getElementById("quantity").value = valueCount;
@@ -253,20 +253,22 @@
       }
       priceTotal();
     });
- 
+
     function priceTotal() {
       const pricePerItem = 18.95;
       const quantity = parseInt(document.getElementById("quantity").value);
       const totalPrice = pricePerItem * quantity;
       document.getElementById("total-price").textContent = `Total Price: $${totalPrice.toFixed(2)}`;
     }
- 
+
     priceTotal();
- 
+
     function changeSlide(index) {
       swiper.slideTo(index);
     }
   </script>
 </body>
+
+</html>
  
 </html>
