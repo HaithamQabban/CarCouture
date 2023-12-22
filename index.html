@@ -78,6 +78,25 @@
       }
     }
 
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px; /* Updated margin here */
+    }
+
+    .thumbnail {
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      cursor: pointer;
+      border: 2px solid #5468FF;
+      border-radius: 5px;
+    }
+
+    .thumbnail:hover {
+      border-color: #102a71;
+    }
+
     .buy-now {
       position: absolute;
       bottom: 2px;
@@ -155,25 +174,6 @@
       font-size: 1rem;
       white-space: nowrap;
       color: #5468FF;
-      margin-top: 2px;
-    }
-
-    .thumbnail {
-      width: 60px;
-      height: 60px;
-      margin: 5px;
-      cursor: pointer;
-      border: 2px solid #5468FF;
-      border-radius: 5px;
-    }
-
-    .thumbnail:hover {
-      border-color: #102a71;
-    }
-
-    .thumbnails {
-      display: flex;
-      justify-content: center;
       margin-top: 2px;
     }
   </style>
