@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="utf-8" />
   <title>CarCouture</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
- 
+
   <!-- Demo styles -->
   <style>
     html,
     body {
       position: relative;
-      height: 115%;
+      height: 100%;
       margin: 0;
       padding: 0;
       overflow: auto;
     }
- 
+
     body {
       background: #fff;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       font-size: 14px;
       color: #000;
     }
- 
+
     .swiper {
       width: 35%;
       height: 40%;
       box-sizing: border-box;
       padding: 0;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       overflow: hidden;
-      margin: 30px auto 2px; /* Updated margin here */
+      margin: 30px auto 2px;
       border-radius: 25px;
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
     }
- 
+
     .swiper-slide {
       position: relative;
       width: 100%;
@@ -48,9 +49,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 2px; /* Updated margin here */
+      margin-bottom: 2px;
     }
- 
+
     .swiper-slide img {
       max-width: 100%;
       min-height: 50%;
@@ -61,37 +62,36 @@
       max-height: 100%;
       max-width: 100%;
     }
- 
+
     .swiper-button-next,
     .swiper-button-prev {
       color: #eee;
     }
- 
-    /* Media query for smaller screens */
+
     @media only screen and (max-width: 968px) {
       .swiper {
         width: 90%;
       }
- 
+
       .swiper-slide {
-        margin-bottom: 2px; /* Updated margin for smaller screens */
+        margin-bottom: 2px;
       }
     }
- 
+
     .buy-now {
       position: absolute;
-      bottom: 2px; /* Updated margin here */
+      bottom: 2px;
       width: 100%;
       text-align: center;
     }
- 
+
     .quantity {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2px; /* Updated margin here */
+      margin-top: 2px;
     }
- 
+
     .quantity input {
       width: 40px;
       height: 30px;
@@ -99,7 +99,7 @@
       margin: 0 5px;
       border-radius: 5px;
     }
- 
+
     .quantity button {
       padding: 5px 10px;
       border-radius: 5px;
@@ -108,23 +108,23 @@
       cursor: pointer;
       transition: background-color 0.5s cubic-bezier(0.47, 1.64, 0.41, 0.8);
     }
- 
+
     .quantity button:hover {
       background-color: #102a71;
       color: #fff;
     }
- 
+
     .quantity button.minus-btn[disabled] {
       background-color: #ffffff;
       cursor: not-allowed;
     }
- 
+
     #total-price {
-      margin-top: 2px; /* Updated margin here */
+      margin-top: 2px;
       font-size: 1.2em;
       color: #429E9D;
     }
- 
+
     .buy-now button {
       font-size: 40px;
       border: 0;
@@ -138,26 +138,26 @@
       text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
       transition: box-shadow 0.15s ease, transform 0.15s ease;
     }
- 
+
     .buy-now button:hover {
       box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%),
         inset 0px -0.1em 0px #3c4fe0;
       transform: translateY(-0.1em);
     }
- 
+
     .buy-now button:active {
       box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
       transform: translateY(0em);
     }
- 
+
     .titel {
       position: relative;
       font-size: 1rem;
       white-space: nowrap;
       color: #5468FF;
-      margin-top: 2px; /* Updated margin here */
+      margin-top: 2px;
     }
- 
+
     .thumbnail {
       width: 60px;
       height: 60px;
@@ -166,23 +166,21 @@
       border: 2px solid #5468FF;
       border-radius: 5px;
     }
- 
+
     .thumbnail:hover {
       border-color: #102a71;
     }
- 
+
     .thumbnails {
       display: flex;
       justify-content: center;
-      margin-top: 2px; /* Updated margin here */
+      margin-top: 2px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Swiper -->
   <div class="swiper mySwiper">
-    <!-- Swiper slides -->
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img src="turbo as.webp" alt="Slide 1">
@@ -193,21 +191,17 @@
       <div class="swiper-slide">
         <img src="turbo.jpg" alt="Slide 3">
       </div>
-      <!-- Add more slides with images as needed -->
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-
-    <!-- Thumbnails -->
-    <div class="thumbnails">
-      <img class="thumbnail" src="turbo as.webp" alt="Thumbnail 1" onclick="changeSlide(0)">
-      <img class="thumbnail" src="turbo 1.jpg" alt="Thumbnail 2" onclick="changeSlide(1)">
-      <img class="thumbnail" src="turbo.jpg" alt="Thumbnail 3" onclick="changeSlide(2)">
-      <!-- Add more thumbnails as needed -->
-    </div>
   </div>
 
-  <!-- "BUY NOW" section -->
+  <div class="thumbnails">
+    <img class="thumbnail" src="turbo as.webp" alt="Thumbnail 1" onclick="changeSlide(0)">
+    <img class="thumbnail" src="turbo 1.jpg" alt="Thumbnail 2" onclick="changeSlide(1)">
+    <img class="thumbnail" src="turbo.jpg" alt="Thumbnail 3" onclick="changeSlide(2)">
+  </div>
+
   <div class="buy-now">
     <div class="titel">
       <h1>Turbo Air Freshener</h1>
@@ -223,9 +217,7 @@
     </div>
   </div>
 
-  <!-- Your existing scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
   <script>
     var swiper = new Swiper(".mySwiper", {
       rewind: true,
