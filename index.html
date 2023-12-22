@@ -13,7 +13,7 @@
     html,
     body {
       position: relative;
-      height: 110%;
+      height: 100%;
       margin: 0;
       padding: 0;
       overflow: auto;
@@ -26,9 +26,16 @@
       color: #000;
     }
 
-    .swiper-container {
+    .swiper {
       width: 35%;
       height: 40%;
+      box-sizing: border-box;
+      padding: 0;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      overflow: hidden;
+      margin: 30px auto 2px;
+      border-radius: 25px;
       position: absolute;
       top: 0;
       left: 50%;
@@ -56,13 +63,25 @@
       max-width: 100%;
     }
 
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #eee;
+    }
+
+    @media only screen and (max-width: 968px) {
+      .swiper {
+        width: 90%;
+      }
+
+      .swiper-slide {
+        margin-bottom: 2px;
+      }
+    }
+
     .thumbnails {
       display: flex;
       justify-content: center;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      margin-bottom: 20px; /* Adjusted margin here */
+      margin-top: 10px; /* Updated margin here */
     }
 
     .thumbnail {
@@ -161,7 +180,7 @@
 </head>
 
 <body>
-  <div class="swiper-container mySwiper">
+  <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img src="turbo as.webp" alt="Slide 1">
@@ -201,8 +220,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 10,
+      rewind: true,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
