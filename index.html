@@ -1,16 +1,15 @@
- 
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
-<meta charset="utf-8" />
-<title>CarCouture</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-<!-- Link Swiper's CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
- 
+  <meta charset="utf-8" />
+  <title>CarCouture</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- Demo styles -->
-<style>
+  <style>
     html,
     body {
       position: relative;
@@ -19,32 +18,32 @@
       padding: 0;
       overflow: auto;
     }
-	
- 
+
     body {
       background: #ffffff;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       font-size: 20px;
       color: #000;
-      overflow-x: hidden; /* Hide horizontal scrollbar */
+      overflow-x: hidden;
+      /* Hide horizontal scrollbar */
     }
- 
-.swiper {
-  width: 35%;
-  height: 40%;
-  box-sizing: border-box;
-  padding: 0;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  overflow: auto;
-  margin: 30px auto 20px; /* Center the swiper horizontally */
-  border-radius: 25px;
-  position: relative;
-  top: 0;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-}
 
- 
+    .swiper {
+      width: 35%;
+      height: 40%;
+      box-sizing: border-box;
+      padding: 0;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      overflow: auto;
+      margin: 30px auto 20px;
+      /* Center the swiper horizontally */
+      border-radius: 25px;
+      position: relative;
+      top: 0;
+      overflow-x: hidden;
+      /* Hide horizontal scrollbar */
+    }
+
     .swiper-slide {
       position: relative;
       width: 100%;
@@ -54,7 +53,7 @@
       align-items: center;
       margin-bottom: 2px;
     }
- 
+
     .swiper-slide img {
       max-width: 100%;
       min-height: 50%;
@@ -65,27 +64,27 @@
       max-height: 100%;
       max-width: 100%;
     }
- 
+
     .swiper-button-next,
     .swiper-button-prev {
       color: #eee;
     }
- 
+
     @media only screen and (max-width: 968px) {
       .swiper {
         width: 90%;
       }
- 
+
       .swiper-slide {
         margin-bottom: 2px;
       }
     }
- 
+
     .thumbnails {
       display: flex;
       justify-content: center;
     }
- 
+
     .thumbnail {
       width: 60px;
       height: 60px;
@@ -94,25 +93,25 @@
       border: 2px solid #5468FF;
       border-radius: 5px;
     }
- 
+
     .thumbnail:hover {
       border-color: #102a71;
     }
- 
+
     .buy-now {
       position: relative;
       bottom: 2px;
       width: 100%;
       text-align: center;
     }
- 
+
     .quantity {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-top: 2px;
     }
- 
+
     .quantity input {
       width: 40px;
       height: 30px;
@@ -120,7 +119,7 @@
       margin: 0 5px;
       border-radius: 5px;
     }
- 
+
     .quantity button {
       padding: 5px 10px;
       border-radius: 5px;
@@ -129,180 +128,183 @@
       cursor: pointer;
       transition: background-color 0.5s cubic-bezier(0.47, 1.64, 0.41, 0.8);
     }
- 
+
     .quantity button:hover {
       background-color: #102a71;
       color: #fff;
     }
- 
+
     .quantity button.minus-btn[disabled] {
       background-color: #ffffff;
       cursor: not-allowed;
     }
- 
+
     #total-price {
       margin-top: 2px;
       font-size: 1.2em;
       color: #429E9D;
     }
- 
+
     .buy-now button {
       font-size: 50px;
       border: 0;
       cursor: pointer;
       background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100%);
-      box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%),
-        inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+      box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
       padding: 10px 20px;
       border-radius: 10px;
       color: #fff;
       text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
       transition: box-shadow 0.15s ease, transform 0.15s ease;
     }
- 
+
     .buy-now button:hover {
-      box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%),
-        inset 0px -0.1em 0px #3c4fe0;
+      box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
       transform: translateY(-0.1em);
     }
- 
+
     .buy-now button:active {
       box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
       transform: translateY(0em);
     }
-	
-	.titel {
-	  position: relative;
-	  font-size: 1rem;
-	  white-space: nowrap;
-	  color: #5468FF;
-	  margin-top: -1px;
-	}
-	
-	@media only screen and (max-width: 500px) {
-	  .titel {
-	    font-size: 0.6rem; /* Adjust the font size as needed */
-	  }
-		.buy-now button {
-	    font-size: 40px; /* Adjust the font size as needed */
-	  }
-	    body {
-	    font-size: 0.8rem; /* Adjust the font size as needed */
-	  }
-	}
-	*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
+    .titel {
+      position: relative;
+      font-size: 1rem;
+      white-space: nowrap;
+      color: #5468FF;
+      margin-top: -1px;
+    }
 
-.container
-{	
-    align:center 
-    width: 600px;
-    border: 2px solid #333;
-    padding: 15px 10px;
-    margin-top: 67px;
-	
-}
-.container h2
-{
-    text-align: center;
-    margin-bottom: 2px
-}
-textarea
-{
-    width: 100%;
-    border: none;
-    border-bottom: 10px solid #aaa;
-    background-color: transparent;
-    margin-bottom: 2px;
-    resize: none;
-    outline: none;
-    transition: .5s
-}
+    @media only screen and (max-width: 500px) {
+      .titel {
+        font-size: 0.6rem;
+        /* Adjust the font size as needed */
+      }
 
-input[type="submit"], button
-{
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-}
-button
-{
-    color: #333;
-    background-color: transparent
-}
+      .buy-now button {
+        font-size: 40px;
+        /* Adjust the font size as needed */
+      }
 
-</style>
+      body {
+        font-size: 0.8rem;
+        /* Adjust the font size as needed */
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      align: center;
+      width: 600px;
+      border: 2px solid #333;
+      padding: 15px 10px;
+      margin-top: 67px;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 2px
+    }
+
+    textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 10px solid #aaa;
+      background-color: transparent;
+      margin-bottom: 2px;
+      resize: none;
+      outline: none;
+      transition: .5s
+    }
+
+    input[type="submit"],
+    button {
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button {
+      color: #333;
+      background-color: transparent
+    }
+  </style>
 </head>
- 
+
 <body>
-<?php
-include ("nav.php");
-?>
-	
-<div class="swiper mySwiper">
-	<div class="swiper-wrapper">
-		<div class="swiper-slide">
-		<img src="turbo as.webp" alt="Slide 1">
-		</div>
-		<div class="swiper-slide">
-		<img src="turbo 1.jpg" alt="Slide 2">
-		</div>
-		<div class="swiper-slide">
-		<img src="turbo.jpg" alt="Slide 3">
-		</div>
-	</div>
-	<div class="swiper-button-next"></div>
-	<div class="swiper-button-prev"></div>
-</div>
- 
-<div class="thumbnails">
-<img class="thumbnail" src="turbo as.webp" alt="Thumbnail 1" onclick="changeSlide(0)">
-<img class="thumbnail" src="turbo 1.jpg" alt="Thumbnail 2" onclick="changeSlide(1)">
-<img class="thumbnail" src="turbo.jpg" alt="Thumbnail 3" onclick="changeSlide(2)">
-</div>
- 
-  <div class="buy-now">
-<div class="thumbnails">
-<div class="titel">
-<h1>Turbo Air Freshener</h1>
-<h2 style="color: #429e9d;">Free shipping🚚</h2>
-<div class="quantity">
-<button class="btn minus-btn disabled" type="button" disabled="disabled">-</button>
-<input type="text" id="quantity" value="1">
-<button class="btn plus-btn" type="button">+</button>
-</div>
-<div id="total-price">Total Price: $18.95</div>
-<a href="chekout.html">
-<button>
-        BUY NOW
-</button>
-</a>
-</div>
-</div>
-</div>
-	
-	<div class="container">
-  <h2>Leave Us a Comment</h2>
-  <form>
-   <textarea placeholder='Add Your Comment'></textarea>
-    <div class="button">
-      <input type="button" value='Comment'>
-      <button id='clear' href='#'>Cancel</button>
+  <?php
+  include("nav.php");
+  ?>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="turbo as.webp" alt="Slide 1">
+      </div>
+      <div class="swiper-slide">
+        <img src="turbo 1.jpg" alt="Slide 2">
+      </div>
+      <div class="swiper-slide">
+        <img src="turbo.jpg" alt="Slide 3">
+      </div>
     </div>
-  </form>
-</div>
- 
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <div class="thumbnails">
+    <img class="thumbnail" src="turbo as.webp" alt="Thumbnail 1" onclick="changeSlide(0)">
+    <img class="thumbnail" src="turbo 1.jpg" alt="Thumbnail 2" onclick="changeSlide(1)">
+    <img class="thumbnail" src="turbo.jpg" alt="Thumbnail 3" onclick="changeSlide(2)">
+  </div>
+
+  <div class="buy-now">
+    <div class="thumbnails">
+      <div class="titel">
+        <h1>Turbo Air Freshener</h1>
+        <h2 style="color: #429e9d;">Free shipping🚚</h2>
+        <div class="quantity">
+          <button class="btn minus-btn disabled" type="button" disabled="disabled">-</button>
+          <input type="text" id="quantity" value="1">
+          <button class="btn plus-btn" type="button">+</button>
+        </div>
+        <div id="total-price">Total Price: $18.95</div>
+        <a href="chekout.html">
+          <button>
+            BUY NOW
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Leave Us a Comment</h2>
+    <form>
+      <textarea placeholder='Add Your Comment'></textarea>
+      <div class="button">
+        <input type="button" value='Comment'>
+        <button id='clear' href='#'>Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="comments">
+    <!-- Comments will be displayed here -->
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
+  <script>
     var swiper = new Swiper(".mySwiper", {
       rewind: true,
       navigation: {
@@ -310,9 +312,9 @@ include ("nav.php");
         prevEl: ".swiper-button-prev",
       },
     });
- 
+
     var valueCount = 1;
- 
+
     document.querySelector(".plus-btn").addEventListener("click", function () {
       valueCount++;
       document.getElementById("quantity").value = valueCount;
@@ -320,7 +322,7 @@ include ("nav.php");
       document.querySelector(".minus-btn").classList.remove("disabled");
       priceTotal();
     });
- 
+
     document.querySelector(".minus-btn").addEventListener("click", function () {
       valueCount--;
       document.getElementById("quantity").value = valueCount;
@@ -329,41 +331,41 @@ include ("nav.php");
       }
       priceTotal();
     });
- 
+
     function priceTotal() {
       const pricePerItem = 18.95;
       const quantity = parseInt(document.getElementById("quantity").value);
       const totalPrice = pricePerItem * quantity;
       document.getElementById("total-price").textContent = `Total Price: $${totalPrice.toFixed(2)}`;
     }
- 
+
     priceTotal();
- 
+
     function changeSlide(index) {
       swiper.slideTo(index);
     }
 
-	var feild = document.querySelector('textarea');
-	var backUp = feild.getAttribute('placeholder');
-	var btn = document.querySelector('.btn');
-	var clear = document.getElementById('clear')
-	
-	feild.onfocus = function(){
-	    this.setAttribute('placeholder', '');
-	    this.style.borderColor = '#333';
-	    btn.style.display = 'block'
-	}
-	
-	feild.onblur = function(){
-	    this.setAttribute('placeholder',backUp);
-	    this.style.borderColor = '#aaa'
-	}
-	
-	clear.onclick = function(){
-	    btn.style.display = 'none';
-	    feild.value = '';
-	}
-</script>
+    var feild = document.querySelector('textarea');
+    var backUp = feild.getAttribute('placeholder');
+    var btn = document.querySelector('.btn');
+    var clear = document.getElementById('clear')
+
+    feild.onfocus = function () {
+      this.setAttribute('placeholder', '');
+      this.style.borderColor = '#333';
+      btn.style.display = 'block'
+    }
+
+    feild.onblur = function () {
+      this.setAttribute('placeholder', backUp);
+      this.style.borderColor = '#aaa'
+    }
+
+    clear.onclick = function () {
+      btn.style.display = 'none';
+      feild.value = '';
+    }
+  </script>
 </body>
- 
+
 </html>
